@@ -1,4 +1,3 @@
-// import { Component } from 'react';
 import { useState } from 'react';
 import { Statistics } from './statistics/statistics';
 import { FeedbackOptions } from './feedbackOptions/feedbackOptions';
@@ -10,43 +9,39 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  // state = {
-  //   good: 0,
-  //   neutral: 0,
-  //   bad: 0,
-  // };
+  const feedBack = {
+    good: good,
+    neutral: neutral,
+    bad: bad,
+  };
 
   const plusFeedBackAll = option => {
     switch (option) {
       case 'good': {
-        setGood(option + 1);
+        setGood(prevState => prevState + 1);
         console.log(option);
         return;
       }
       case 'neutral': {
-        setNeutral(option + 1);
+        setNeutral(prevState => prevState + 1);
+        console.log(option);
         return;
       }
       case 'bad': {
-        setBad(option + 1);
+        setBad(prevState => prevState + 1);
+        console.log(option);
         return;
       }
+      default:
+        return;
     }
-    // default: return;
   };
-
-  // this.setState(prevState => {
-  //   return {
-  //     [option]: prevState[option] + 1,
-  //   };
-  // });
 
   const countTotalFeedback = () => {
     return good + neutral + bad;
   };
 
   const countPositiveFeedbackPercentage = () => {
-    // const { good } = this.state;
     return Math.round((good / countTotalFeedback()) * 100);
   };
 
@@ -55,8 +50,7 @@ const App = () => {
       <Section title="Please leave feedback">
         <FeedbackOptions
           onLeaveFeedback={plusFeedBackAll}
-          // options={Object.keys(state)}
-          options={Object.keys([good, neutral, bad])}
+          options={Object.keys(feedBack)}
         ></FeedbackOptions>
       </Section>
 
