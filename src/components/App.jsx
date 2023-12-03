@@ -19,17 +19,17 @@ const App = () => {
     switch (option) {
       case 'good': {
         setGood(prevState => prevState + 1);
-        console.log(option);
+
         return;
       }
       case 'neutral': {
         setNeutral(prevState => prevState + 1);
-        console.log(option);
+
         return;
       }
       case 'bad': {
         setBad(prevState => prevState + 1);
-        console.log(option);
+
         return;
       }
       default:
